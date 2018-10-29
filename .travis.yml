@@ -3,30 +3,7 @@ sudo: required
 services:
 - docker
 
-before_install:
-- docker pull centos:7.5.1804
-
-#yum -y install --downloadonly --downloaddir=/rpms --setopt=obsoletes=0 docker-ce-selinux-17.03.3.ce docker-ce-17.03.3.ce && 
 script:
-- >
-  docker run -t --rm -v ${PWD}/rpms:/rpms -v ${PWD}/kubernetes.repo:/etc/yum.repos.d/kubernetes.repo centos:7.5.1804
-  bash -c
-  "yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm &&
-   yum install -y https://download.ceph.com/rpm-luminous/el7/noarch/ceph-release-1-1.el7.noarch.rpm &&
-   mkdir -p /rpms &&
-   yum -y install --downloadonly --downloaddir=/rpms yum-utils device-mapper-persistent-data lvm2 &&
-   yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo && 
-   yum -y install --downloadonly --downloaddir=/rpms docker-ce-18.06.1.ce &&
-   yum remove -y python-chardet &&
-   yum -y install --downloadonly --downloaddir=/rpms docker-python docker-compose python-chardet python-requests &&
-   yum -y install --downloadonly --downloaddir=/rpms ipset ipvsadm conntrack-tools &&
-   yum -y install --downloadonly --downloaddir=/rpms audit rsync jq git tcpdump nc bind-utils net-tools &&
-   yum -y install --downloadonly --downloaddir=/rpms ceph-deploy ceph ceph-radosgw rbd-nbd rbd-mirror open-vm-tools  nfs-utils && 
-   yum -y install --downloadonly --downloaddir=/rpms kubernetes-cni-0.6.0 kubectl-1.11.3 kubelet-1.11.3 kubeadm-1.11.3 &&
-   yum install -y createrepo &&
-   yum clean all &&
-   createrepo /rpms"
-- sudo chmod -R 755 ${PWD}/rpms
-- docker build -t wisecloud/yum-repo:$TRAVIS_BRANCH .
-- docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-- docker push wisecloud/yum-repo:$TRAVIS_BRANCH
+- echo \"$DOCKER_PASSWORD\" | docker login -u \"$DOCKER_USERNAME\" --password-stdin
+- make build
+- make push
