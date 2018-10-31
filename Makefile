@@ -4,8 +4,8 @@ VERSION=v0.0.1
 
 .PHONY:build push run clear
 build:
-	docker build -f Dockerfile.client -t ${REPO1}:${VERSION} .
-	docker build -f Dockerfile.server -t ${REPO2}:${VERSION} .
+	docker build -f Dockerfile.server -t ${REPO1}:${VERSION} .
+	docker build -f Dockerfile.client -t ${REPO2}:${VERSION} .
 
 push:
 	docker push ${REPO1}:${VERSION}
