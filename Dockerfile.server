@@ -3,11 +3,11 @@ FROM centos:7.5.1804
 
 RUN yum install -y python-setuptools
 RUN  mkdir -p          /code/wss
-COPY wss_server.py     /code
-COPY wss               /code
-COPY setup.py          /code
+COPY wss_server.py     /code/
+COPY wss/              /code/
+COPY setup.py          /code/
 
 
-WORKDIR /code
+WORKDIR /code/
 RUN python setup.py install
 CMD ["python2", "wss_server.py"]
