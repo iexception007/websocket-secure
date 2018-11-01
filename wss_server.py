@@ -4,9 +4,9 @@ import trollius as asyncio
 loop = asyncio.get_event_loop()
 
 server =  wss.Server(port=9002,
-                     usessl=True,
-                     sslcert="/code/ssl/www.aaa.com.crt",
-                     sslkey="/code/ssl/www.aaa.com.key", auth=None)
+                     useSsl=True,
+                     sslCert="/code/ssl/www.aaa.com.crt",
+                     sslKey="/code/ssl/www.aaa.com.key")
 
 def onTextMessage(server, msg, client):
 	print("got message from client:", msg)
