@@ -15,5 +15,5 @@ RUN ls -R /code
 
 WORKDIR /code/
 RUN python setup.py install
-RUN bash /code/gen-cer.sh www.aaa.com
+RUN bash /code/ssl/gen-cer.sh www.aaa.com
 CMD ["python2", "wss_server.py"]
