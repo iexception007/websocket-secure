@@ -14,5 +14,5 @@ RUN ls -R /code
 
 WORKDIR /code/
 RUN python setup.py install
-RUN bash /code/ssl/gen-cer.sh www.aaa.com
-CMD python2 /code/wss/wssserver.py --debug --port 9002 --ssl --sslcert=/code/ssl/www.aaa.com.crt --sslkey=/code/ssl/www.aaa.com.key
+#RUN bash /code/ssl/gen-cer.sh www.aaa.com
+CMD python2 /code/wss/wssserver.py --debug --port 9002 --ssl --sslcert=/code/ssl/wise2c.com.crt --sslkey=/code/ssl/wise2c.com.key
