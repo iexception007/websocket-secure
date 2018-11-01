@@ -5,8 +5,8 @@ loop = asyncio.get_event_loop()
 
 server =  wss.Server(port=9002,
                      usessl=True,
-                     sslcert="path/to/cert.crt",
-                     sslkey="path/to/server.key", auth=None)
+                     sslcert="/code/ssl/www.aaa.com.crt",
+                     sslkey="/code/ssl/www.aaa.com.key", auth=None)
 
 def onTextMessage(server, msg, client):
 	print("got message from client:", msg)

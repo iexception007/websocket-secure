@@ -2,13 +2,14 @@ FROM centos:7.5.1804
 
 
 RUN yum install -y python-setuptools
-RUN  mkdir -p          /code/wss
+RUN  mkdir -p          /code/wss \
+  && mkdir -p          /code/ssl 
 COPY wss_server.py     /code/
 COPY wss/              /code/wss/
+COPY ssl/              /code/ssl/
 COPY setup.py          /code/
-RUN ls -R /code/
-
 
 WORKDIR /code/
 RUN python setup.py install
+RUN bash /code/gen-cer.sh www.aaa.com
 CMD ["python2", "wss_server.py"]
