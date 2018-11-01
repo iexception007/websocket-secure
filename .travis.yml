@@ -6,6 +6,6 @@ services:
 
 script:
 - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-- yum install -y openssl
+- apt-get install -y openssl
 - make build
 - make push
