@@ -10,4 +10,4 @@ RUN ls -R /code
 
 WORKDIR /code/
 RUN python setup.py install
-CMD ["python2", "wss_client.py"]
+CMD ["python2", "/code/wws/wssclient.py"]

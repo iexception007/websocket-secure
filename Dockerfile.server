@@ -6,7 +6,6 @@ RUN yum install -y python-setuptools \
 
 RUN mkdir -p           /code/wss \
  && mkdir -p           /code/ssl 
-COPY wss_server.py     /code/
 COPY wss/              /code/wss/
 COPY ssl/              /code/ssl/
 COPY setup.py          /code/
@@ -16,4 +15,4 @@ RUN ls -R /code
 WORKDIR /code/
 RUN python setup.py install
 RUN bash /code/ssl/gen-cer.sh www.aaa.com
-CMD ["python2", "wss_server.py"]
+CMD python2 /code/wss/wssserver.py --debug --port 9002 --ssl --sslcert=/code/ssl/www.aaa.com.crt --sslkey=/code/ssl/www.aaa.com.key

@@ -198,7 +198,7 @@ def server_main(ServerClass = Server, **kwargs):
 	s.debug = args.debug
 	
 	return s
-
+s
 
 if __name__ == "__main__":
 	
@@ -218,7 +218,7 @@ if __name__ == "__main__":
 				traceback.print_exception(exc_type, exc_value, exc_traceback,
 	                          limit=2, file=sys.stdout)
 
-			yield asyncio.From(asyncio.sleep(30))
+			yield asyncio.From(asyncio.sleep(3))
 
 	loop.create_task(sendData())
 
