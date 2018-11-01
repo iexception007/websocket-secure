@@ -5,6 +5,7 @@ RUN  mkdir -p          /code/wss
 COPY wss/              /code/wss
 COPY setup.py          /code/
 
+
 WORKDIR /code/
 RUN python setup.py install
 CMD ["python2", "wss/wssclient.py"]

@@ -8,8 +8,10 @@ COPY wss_server.py     /code/
 COPY wss/              /code/wss/
 COPY ssl/              /code/ssl/
 COPY setup.py          /code/
+RUN ls -R /code
+
 
 WORKDIR /code/
 RUN python setup.py install
-RUN bash /code/gen-cer.sh www.aaa.com
+RUN bash ./ssl/gen-cer.sh www.aaa.com
 CMD ["python2", "wss_server.py"]
