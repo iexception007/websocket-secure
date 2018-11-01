@@ -198,7 +198,6 @@ def server_main(ServerClass = Server, **kwargs):
 	s.debug = args.debug
 	
 	return s
-s
 
 if __name__ == "__main__":
 	
